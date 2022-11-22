@@ -37,7 +37,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private TextView store_name;
+    private TextView store_name, text_color;
     private Button btn_add;
     private ListView listView;
     private MenuAdapter adapter;
@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText searchMenu;
     private Button logout;
     private LinearLayout review, orderlist, standing, question, editAccnt;
+    Switch sw;
 
 
     @Override
@@ -70,6 +71,21 @@ public class MainActivity extends AppCompatActivity {
 
         store_name.setText("가게 이름");
 
+        //스위치(운행중/운행종료)
+        sw=findViewById(R.id.sw);
+        text_color=findViewById(R.id.store_state);
+        sw.setOnCheckedChangeListener(new Switch.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+                    text_color.setTextColor(Color.rgb(255,0,0));
+                }else{
+                    text_color.setTextColor(Color.rgb(0,0,0));
+                }
+            }
+        });
+        
         //마이페이지
         mypage.setOnClickListener(new View.OnClickListener() {
             @Override
